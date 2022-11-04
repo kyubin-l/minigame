@@ -1,14 +1,16 @@
 import re
 
+
 class WhiteBox:
     all_whiteboxes = []
     def __init__(self, x, y):
-        self.options = []
+        self.options = None
         self.neighbours = []
         self.final_value = None
         self.x = x
         self.y = y
-        self.related_blackboxes = []
+        self.related_task = []
+        self.combinations = []
 
         WhiteBox.all_whiteboxes.append(self)
 
@@ -59,5 +61,5 @@ class Task:
 
     
     def evaluate_text(self):
-        self.value = int(re.sub('[^1-9]', '', self._text))
+        self.value = int(re.sub('[^0-9]', '', self._text))
         self.direction = re.sub('[^a-z]', '', self._text)
